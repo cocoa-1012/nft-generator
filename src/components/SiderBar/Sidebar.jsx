@@ -117,7 +117,7 @@ export const Sidebar = ({
       <div className="buttons">
         <button onClick={() => previewNFT()}>Preview</button>
         <button onClick={() => generateCollection()}>
-          Generate Collection
+          Generate Collections
         </button>
         <button onClick={() => setIsOptionsOpen(!isOptiosOpen)}>&#9660;</button>
       </div>
