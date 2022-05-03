@@ -6,7 +6,6 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import { ImageManager } from "./components/ImageManager/ImageManager";
 import { Loading } from "./components/Loading";
-import { Payment } from "./components/Payment/Payment";
 import { PropertyManager } from "./components/PropertyManager/PropertyManager";
 import { RaritySettings } from "./components/PropertyManager/RaritySettings";
 import { Sidebar } from "./components/SiderBar/Sidebar";
@@ -29,7 +28,6 @@ function App() {
   const [isZipping, setIsZipping] = useState(false);
   const [currentPercent, setCurrentPercent] = useState(0);
   const [imgDimension, setImgDimension] = useState(null);
-  const [isPayment, setIsPayment] = useState(false);
 
   const deleteLayer = () => {
     if (layerData.length > 0) {
@@ -66,10 +64,7 @@ function App() {
   };
 
   // Select image Array with Rarities
-  const generateImage = () => {
-    price === 0 ? generateImageStep() : setIsPayment(true);
-  };
-  const generateImageStep = async () => {
+  const generateImage = async () => {
     const availableNumber = availableNFTs();
     if (collectionSize < availableNumber) {
       setIsGenerating(true);
@@ -256,14 +251,6 @@ function App() {
   }, [collectionSize, isWaterMark, layerData]);
   return (
     <div className="App">
-      {isPayment && (
-        <Payment
-          setPayment={setIsPayment}
-          price={price}
-          generateImageStep={generateImageStep}
-          setIsPayment={setIsPayment}
-        />
-      )}
       {isGenerating && (
         <Loading val="generating" currentPercent={currentPercent} />
       )}
@@ -297,7 +284,6 @@ function App() {
           generatePrevImg={generatePrevImg}
           setIsPreview={setIsPreview}
           isPreview={isPreview}
-          setPayment={setIsPayment}
         />
         <ImageManager
           selectedLayer={selectedLayer}

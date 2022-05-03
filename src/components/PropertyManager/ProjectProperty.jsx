@@ -8,16 +8,9 @@ export const ProjectProperty = ({
   projectDesc,
   setProjectName,
   setProjectDesc,
-  resultToZip,
-  setIsZipping,
   imgDimension,
   setIsPreview,
 }) => {
-  const onClickZip = () => {
-    setIsZipping(true);
-    resultToZip();
-  };
-
   const changeColSize = (e) => {
     setCollectionSize(
       e.target.value > 15000 ? 15000 : e.target.value < 0 ? 0 : e.target.value
